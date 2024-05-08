@@ -10,7 +10,7 @@ foreach e : examples
     e,
     e + '.c',
     dependencies : [libcgif_dep],
-    include_directories : ['../inc/'],
+    include_directories : include_directories('../inc/'),
     install : b_install_examples,
   )
   if get_option('tests') and not meson.is_cross_build()

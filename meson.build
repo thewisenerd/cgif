@@ -10,7 +10,7 @@ cgif_sources = ['src/cgif.c', 'src/cgif_raw.c']
 lib = library(
   'cgif',
   cgif_sources,
-  include_directories : ['inc/'],
+  include_directories : include_directories('inc/'),
   soversion : '0',
   version : meson.project_version(),
   install : true,

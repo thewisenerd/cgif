@@ -5,7 +5,7 @@ foreach t : tests
   name = t.get('name')
   src = [join_paths(meson.source_root(), 'tests', name + '.c'), 'cgif_create_fuzz_seed.c']
   cflags = ['-D', 'CGIF_OUTPATH="' + name + '.seed' + '"']
-  exe = executable(name + '_genseed', sources : src, c_args : cflags, include_directories : ['../inc'])
+  exe = executable(name + '_genseed', sources : src, c_args : cflags, include_directories : include_directories('../inc'))
   test('generate ' + name + '.seed', exe, workdir : join_paths(meson.build_root(), 'fuzz'), priority : -2, should_fail : t.get('seed_should_fail'))
 endforeach
 # get the ordering right:
@@ -17,7 +17,7 @@ exe = executable(
   'cgif_fuzzer_standalone',
   sources : src,
   dependencies : [libcgif_dep],
-  include_directories : ['../inc'],
+  include_directories : include_directories('../inc'),
 )
 # test seed corpus with standalone fuzzer
 foreach t : tests

@@ -52,7 +52,7 @@ foreach t : tests
     'test_' + name,
     name + '.c',
     dependencies : [libcgif_dep],
-    include_directories : ['../inc/'],
+    include_directories : include_directories('../inc/'),
   )
   test(name, test_exe, priority : 0)
 endforeach
